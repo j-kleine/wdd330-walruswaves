@@ -1,0 +1,89 @@
+:root {
+    /* COLORS */
+    --primary-color: #262626;
+    --secondary-color: #7F7F7F;
+    --contrast-color: #FFFFFF;
+
+    /* FONTS */
+    --header-font: 'Century Gothic', sans-serif;
+    --heading-font: 'Century Gothic', sans-serif;
+    --standard-font: 'Century Gothic', sans-serif;
+
+    /* BORDER */
+    --border-light-grey: 1px solid #7F7F7F;
+    --border-radius-round: ;
+}
+
+body {
+    background-image: url('../images/background.webp');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header h1 {
+    margin: 1rem 0;
+    padding-left: 1rem;
+    font-family: var(--header-font);
+    font-size: 9vw;
+    font-weight: 400;
+    letter-spacing: .75rem;
+}
+
+main h2 {
+    margin: 4rem 0;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--header-font);
+    font-size: 15vw;
+    font-weight: bold;
+    letter-spacing: .5rem;
+}
+
+#location-seeker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+#location-seeker label select {
+    width: 90vw;
+    padding: 1rem;
+    border: var(--border-light-grey);
+    border-radius: 100vw;
+    outline: none;
+    background-color: transparent;
+    backdrop-filter: blur(50px) saturate(100%);
+    text-align: center;
+    font-family: var(--standard-font);
+    font-size: 4vw;
+
+    cursor: pointer;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: .75rem 0;
+    display: flex;
+    justify-content: center;
+
+    border-radius: 10vw 10vw 0 0;
+    background-color: var(--contrast-color);
+}
+
+footer div {
+    display: flex;
+    justify-content: space-around;
+    width: 75%;
+}
+
+footer div img {
+    max-width: 8vw;
+}
