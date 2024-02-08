@@ -22,6 +22,7 @@
 }
 
 body {
+    /* background-image: url('../images/background.webp'); */
     background-image: url('../images/background.webp');
     background-attachment: fixed;
     background-position: center;
@@ -39,7 +40,7 @@ body {
 }
 
 .home-hero {
-    margin: 15vh .5rem;
+    margin: 10vh .5rem;
     padding-left: 5vw;
     display: flex;
     flex-direction: column;
@@ -56,7 +57,7 @@ body {
 }
 
 #location-seeker label select {
-    width: 70vw;
+    width: 80vw;
     max-width: 25rem;
     padding: 1rem;
     border: var(--border-light-grey);
@@ -93,8 +94,8 @@ footer {
 }
 
 .menu-icon {
-    width: 6vw;
-    max-width: 1.875rem;
+    width: 9vw;
+    max-width: 2.8125rem;
     padding: .25rem;
     border: 1px solid transparent;
     border-radius: 50%;
@@ -121,7 +122,7 @@ footer {
     }
 
     #location-seeker label select {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
         transition: var(--transition);
     }
 
