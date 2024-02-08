@@ -10,12 +10,15 @@
     --heading-font: 'Century Gothic', sans-serif;
     --standard-font: 'Century Gothic', sans-serif;
 
-    /* BORDER */
+    /* BORDERS */
     --border-light-grey: 1px solid #7F7F7F;
     --border-radius-round: ;
 
-    /* SHADOW */
+    /* SHADOWS */
     --box-shadow: inset 0 0 35px 5px rgba(0,0,0,0.25), inset 0 2px 1px 1px rgba(255,255,255,0.9), inset 0 -2px 1px rgba(0,0,0,0.25);
+
+    /* TRANSITIONS */
+    --transition: .5s ease;
 }
 
 body {
@@ -26,7 +29,7 @@ body {
     background-size: cover;
 }
 
-header h1 {
+#brand-name {
     margin: 1rem;
     margin-bottom: 0;
     font-family: var(--header-font);
@@ -40,7 +43,7 @@ header h1 {
     padding-left: 5vw;
     display: flex;
     flex-direction: column;
-    font-family: var(--header-font);
+    font-family: var(--heading-font);
     font-size: 15vw;
     font-weight: bold;
     letter-spacing: .5rem;
@@ -66,11 +69,6 @@ header h1 {
     font-size: 4vw;
 
     cursor: pointer;
-    transition: .5s ease;
-}
-
-#location-seeker label select:hover {
-    box-shadow: var(--box-shadow);
 }
 
 footer {
@@ -88,13 +86,13 @@ footer {
     background-color: var(--contrast-color);
 }
 
-footer div {
+#menu-bar {
     display: flex;
     justify-content: space-around;
     width: 75%;
 }
 
-footer div img {
+.menu-icon {
     width: 6vw;
     max-width: 1.875rem;
     padding: .25rem;
@@ -107,12 +105,8 @@ footer div img {
     border: 1px solid var(--secondary-color);
 }
 
-.inactive {
-    display: none;
-}
-
 @media screen and (min-width: 500px) {
-    header h1 {
+    #brand-name {
         font-size: 2.8125rem;
     }
 
@@ -128,5 +122,30 @@ footer div img {
 
     #location-seeker label select {
         font-size: 1.1rem;
+        transition: var(--transition);
+    }
+
+    #location-seeker label select:hover {
+        box-shadow: var(--box-shadow);
+    }
+
+    footer {
+        transition: var(--transition);
+    }
+
+    footer:hover {
+        box-shadow: var(--box-shadow);
+    }
+
+    .menu-icon {
+        transition: var(--transition);
+    }
+
+    .menu-icon:hover {
+        background-color: #FFFFFF;
+    }
+    
+    .menu-icon:active {
+        background-color: var(--primary-color);
     }
 }
