@@ -12,10 +12,14 @@ function homePageContent() {
                 <option value="">Schausende</option>
             </select>
         </label>
-    </div>`
+    </div>
+    `
 }
 
 export function loadHomePage() {
+    // set document title to '... Home'
+    document.title = 'walrusWaves | Home';
+
     // insert on first load of website
     document.querySelector('main').insertAdjacentHTML('afterbegin', homePageContent());
     
@@ -24,6 +28,8 @@ export function loadHomePage() {
 
     // add eventlistener 'click' to home icon
     document.querySelector('#home').addEventListener('click', () => {
+        // set document title to '... Home'
+        document.title = 'walrusWaves | Home';
         
         // empty out main to prepare for reload
         removePageContent('main');
