@@ -28,21 +28,24 @@ function weatherPageContent() {
         </div>
     </div>
     <div id="weather-info-container">
-        <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-        <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-        <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-        <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-        <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-        <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-        <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
+        <div id="no-scrollbar-container">
+            <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
+        </div>
     </div>
-    
     `
 }
 
 export function loadWeatherPage() {
     // add eventlistener 'click' to home icon
     document.querySelector('#weather').addEventListener('click', () => {
+        // set document title to '... Weather'
+        document.title = 'walrusWaves | Weather';
         
         // empty out main to prepare for reload
         removePageContent('main');

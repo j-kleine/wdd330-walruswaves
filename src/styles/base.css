@@ -186,32 +186,35 @@ footer {
     margin: 0 auto;
     margin-bottom: 5rem;
     width: 90vw;
-    height: 40vh;
     border-radius: var(--border-radius-round-corners);
-    
-    overflow-y: scroll;
 }
 
-#weather-info-container::-webkit-scrollbar {
+#no-scrollbar-container {
+    height: 40vh;
+    border-radius: var(--border-radius-round-corners);
+    overflow: scroll;
+}
+
+#no-scrollbar-container::-webkit-scrollbar {
     display: none;
 }
 
-#weather-info-container div {
+#no-scrollbar-container div {
     display: flex;
     justify-content: space-between;
     padding: 1rem 2rem;
     border-bottom: var(--border-light-grey);
 }
 
-#weather-info-container div:nth-child(odd) {
+#no-scrollbar-container div:nth-child(odd) {
     backdrop-filter: blur(100px) brightness(1.5) saturate(75%);
 }
 
-#weather-info-container div:nth-child(even) {
+#no-scrollbar-container div:nth-child(even) {
     backdrop-filter: blur(100px) brightness(1.1);
 }
 
-#weather-info-container div:last-child {
+#no-scrollbar-container div:last-child {
     border: none;
 }
 
@@ -226,6 +229,13 @@ footer {
     font-family: var(--special-font);
     font-size: 5vw;
     font-weight: bold;
+}
+
+
+
+/* ------ SETTINGS PAGE SPECIFIC ELEMENTS ------ */
+.settings-plunge-select {
+    text-transform: none;
 }
 
 
