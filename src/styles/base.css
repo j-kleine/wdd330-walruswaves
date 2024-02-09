@@ -42,6 +42,15 @@ body {
     color: var(--primary-color);
 }
 
+/* main {
+    height: 90vh;
+    overflow-y: scroll;
+}
+
+main::-webkit-scrollbar {
+    display: none;
+} */
+
 #brand-name {
     margin: 1rem;
     margin-bottom: 0;
@@ -149,6 +158,7 @@ footer {
     justify-content: center;
     margin: 2.5vh auto;
     width: 90vw;
+    max-width: 33.75rem;
     -webkit-backdrop-filter: var(--backdrop-filter);
     backdrop-filter: var(--backdrop-filter);
     border: none;
@@ -183,21 +193,24 @@ footer {
 
 #weather-icon {
     width: 35vw;
+    max-width: 13.125rem;
 }
 
 #weather-info-container {
     margin: 0 auto;
     margin-bottom: 5rem;
     width: 90vw;
+    max-width: 33.75rem;
     border-radius: var(--border-radius-round-corners);
     -webkit-backdrop-filter: var(--backdrop-filter);
     backdrop-filter: var(--backdrop-filter);
 }
 
 #no-scrollbar-container {
-    border-radius: var(--border-radius-round-corners);
-    height: 40vh;
+    padding: .5rem 0;
+    height: 35vh;
     overflow: scroll;
+    border-radius: var(--border-radius-round-corners);
 }
 
 #no-scrollbar-container::-webkit-scrollbar {
@@ -219,6 +232,7 @@ footer {
     font-family: var(--standard-font);
     font-size: 4vw;
     text-transform: uppercase;
+    line-height: 5vw;
     letter-spacing: .5rem;
 }
 
@@ -239,27 +253,9 @@ footer {
 
 
 @media screen and (min-width: 500px) {
+    /* ------ STATIC ELEMENTS ------ */
     #brand-name {
         font-size: 2.8125rem;
-    }
-
-    .home-hero {
-        max-width: 100vw;
-        padding: 0;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0 1rem;
-        font-size: 4.6875rem;
-    }
-
-    #plunge-select {
-        font-size: 1.5rem;
-        transition: var(--transition);
-    }
-
-    #plunge-select:hover {
-        box-shadow: var(--box-shadow);
     }
 
     footer {
@@ -281,4 +277,73 @@ footer {
     .menu-icon:active {
         background-color: var(--primary-color);
     }
+
+
+
+    /* ------ ALL PAGE COMMONS ------ */
+    #plunge-select {
+        font-size: 1.5rem;
+        transition: var(--transition);
+    }
+
+    #plunge-select:hover {
+        box-shadow: var(--box-shadow);
+    }
+
+
+
+    /* ------ HOME PAGE SPECIFIC ELEMENTS ------ */
+    .home-hero {
+        max-width: 100vw;
+        padding: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0 1rem;
+        font-size: 4.6875rem;
+    }
+
+
+
+    /* ------ WEATHER PAGE SPECIFIC ELEMENTS ------ */
+    #weather-widget-box {
+        border-radius: 4rem;
+    }
+    
+    .aw-box-labels {
+        font-size: 1.875rem;
+    }
+    
+    .aw-box-values {
+        font-size: 6.5625rem;
+        line-height: 5.625rem;
+    }
+    
+    .aw-box-units {
+        font-size: 1.3125rem;
+    }
+
+    #weather-info-container {
+        border-radius: 4rem;
+    }
+
+    #no-scrollbar-container {
+        border-radius: 4rem;
+    }
+
+    .weather-info-desc {
+        font-size: 1.5rem;
+        line-height: 1.875rem;
+    }
+    
+    .weather-info-value {
+        font-size: 1.875rem;
+    }
+
+
+
+    /* ------ SETTINGS PAGE SPECIFIC ELEMENTS ------ */
+
+
+
 }
