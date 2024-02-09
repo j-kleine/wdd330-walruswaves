@@ -104,8 +104,8 @@ footer {
     background-color: transparent;
     -webkit-backdrop-filter: var(--backdrop-filter);
     backdrop-filter: var(--backdrop-filter);
-    text-align: -webkit-center;
     text-align: center;
+    text-align: -webkit-center;
     color: var(--secondary-color);
     font-family: var(--standard-font);
     font-size: 4vw;
