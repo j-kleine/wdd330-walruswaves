@@ -3,9 +3,9 @@ import { removePageContent, switchActiveMenuIcon } from "./switchPage.mjs";
 function homePageContent() {
     return `
     <h2 class="home-hero"><span>Plunge</span><span>With</span><span>Purpose</span></h2>
-    <div id="location-seeker">
+    <div id="location-seeker" class="home-location-seeker">
         <label>
-            <select name="" id="plunge-select" title="Find your plunge location!">
+            <select name="" id="plunge-select" class="home-plunge-select" title="Find your plunge location!">
                 <option class="option-disabled" value="" disabled="" selected="">Find your location!</option>
                 <option value="">Espergærde</option>
                 <option value="">Jammerbugten</option>
