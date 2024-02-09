@@ -1,18 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@400;800&display=swap');
+
 :root {
     /* COLORS */
     --primary-color: #262626;
-    --secondary-color: #7F7F7F;
-    --contrast-color: #FFFFFF;
+    --secondary-color: #404040;
+    --border-color: #7F7F7F;
+    /* --contrast-color: #FFFFFF; */
     --contrast-color: #f0e4db;
 
     /* FONTS */
     --header-font: 'Century Gothic', sans-serif;
     --heading-font: 'Century Gothic', sans-serif;
     --standard-font: 'Century Gothic', sans-serif;
+    --special-font: 'Changa', sans-serif;
 
     /* BORDERS */
     --border-light-grey: 1px solid #7F7F7F;
-    --border-radius-round: ;
+    --border-radius-circle-corners: 100vw;
+    --border-radius-round-corners: 10vw;
+
+    /* BACKDROP FILTERS */
+    --backdrop-filter: blur(50px);
 
     /* SHADOWS */
     --box-shadow: inset 0 0 35px 5px rgba(0,0,0,0.25), inset 0 2px 1px 1px rgba(255,255,255,0.9), inset 0 -2px 1px rgba(0,0,0,0.25);
@@ -21,12 +29,17 @@
     --transition: .5s ease;
 }
 
+
+
+/* ------ STATIC ELEMENTS ------ */
 body {
     background-image: url('../images/background.webp');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    color: var(--primary-color);
 }
 
 #brand-name {
@@ -36,39 +49,6 @@ body {
     font-size: 9vw;
     font-weight: 400;
     letter-spacing: .75rem;
-}
-
-.home-hero {
-    margin: 15vh .5rem;
-    padding-left: 5vw;
-    display: flex;
-    flex-direction: column;
-    font-family: var(--heading-font);
-    font-size: 15vw;
-    font-weight: bold;
-    letter-spacing: .5rem;
-}
-
-#location-seeker {
-    margin-bottom: 4rem;
-    display: flex;
-    justify-content: center;
-}
-
-#location-seeker label select {
-    width: 70vw;
-    max-width: 25rem;
-    padding: 1rem;
-    border: var(--border-light-grey);
-    border-radius: 100vw;
-    outline: none;
-    background-color: transparent;
-    backdrop-filter: blur(50px) saturate(100%);
-    text-align: center;
-    font-family: var(--standard-font);
-    font-size: 4vw;
-
-    cursor: pointer;
 }
 
 footer {
@@ -93,17 +73,163 @@ footer {
 }
 
 .menu-icon {
-    width: 6vw;
-    max-width: 1.875rem;
+    width: 9vw;
+    max-width: 2.8125rem;
     padding: .25rem;
     border: 1px solid transparent;
-    border-radius: 50%;
+    border-radius: var(--border-radius-circle-corners);
     cursor: pointer;
 }
 
 .active-page {
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--border-color);
 }
+
+
+
+/* ------ ALL PAGE COMMONS ------ */
+#location-seeker {
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
+#plunge-select {
+    width: 90vw;
+    max-width: 28.125rem;
+    padding: .75rem;
+    border: var(--border-light-grey);
+    border-radius: var(--border-radius-circle-corners);
+    outline: none;
+    background-color: transparent;
+    backdrop-filter: var(--backdrop-filter);
+    text-align: center;
+    color: var(--secondary-color);
+    font-family: var(--standard-font);
+    font-size: 4vw;
+
+    cursor: pointer;
+}
+
+
+
+/* ------ HOME PAGE SPECIFIC ELEMENTS ------ */
+.home-hero {
+    margin: 10vh .5rem 0 .5rem;
+    padding-left: 5vw;
+    display: flex;
+    flex-direction: column;
+    color: var(--primary-color);
+    font-family: var(--heading-font);
+    font-size: 15vw;
+    font-weight: bold;
+    letter-spacing: .5rem;
+}
+
+.home-location-seeker {
+    margin-bottom: 5rem;
+}
+
+.home-plunge-select {
+    text-transform: none;
+}
+
+
+
+/* ------ WEATHER PAGE SPECIFIC ELEMENTS ------ */
+.weather-plunge-select {
+    text-transform: uppercase;
+}
+
+#weather-widget-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 2.5vh auto;
+    width: 90vw;
+    backdrop-filter: var(--backdrop-filter);
+    border: none;
+    border-radius: var(--border-radius-round-corners);
+}
+
+.aw-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.aw-box-labels {
+    font-family: var(--standard-font);
+    font-size: 5vw;
+    color: var(--secondary-color);
+}
+
+.aw-box-values {
+    font-family: var(--special-font);
+    font-size: 17.5vw;
+    color: var(--secondary-color);
+    line-height: 15vw;
+}
+
+.aw-box-units {
+    font-family: var(--standard-font);
+    font-size: 3.5vw;
+    color: var(--secondary-color);
+}
+
+#weather-icon {
+    width: 35vw;
+}
+
+#weather-info-container {
+    margin: 0 auto;
+    margin-bottom: 5rem;
+    width: 90vw;
+    height: 40vh;
+    border-radius: var(--border-radius-round-corners);
+    
+    overflow-y: scroll;
+}
+
+#weather-info-container::-webkit-scrollbar {
+    display: none;
+}
+
+#weather-info-container div {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-bottom: var(--border-light-grey);
+}
+
+#weather-info-container div:nth-child(odd) {
+    backdrop-filter: blur(100px) brightness(1.5) saturate(75%);
+}
+
+#weather-info-container div:nth-child(even) {
+    backdrop-filter: blur(100px) brightness(1.1);
+}
+
+#weather-info-container div:last-child {
+    border: none;
+}
+
+.weather-info-desc {
+    font-family: var(--standard-font);
+    font-size: 4vw;
+    text-transform: uppercase;
+    letter-spacing: .5rem;
+}
+
+.weather-info-value {
+    font-family: var(--special-font);
+    font-size: 5vw;
+    font-weight: bold;
+}
+
+
+
 
 @media screen and (min-width: 500px) {
     #brand-name {
@@ -120,12 +246,12 @@ footer {
         font-size: 4.6875rem;
     }
 
-    #location-seeker label select {
-        font-size: 1.1rem;
+    #plunge-select {
+        font-size: 1.5rem;
         transition: var(--transition);
     }
 
-    #location-seeker label select:hover {
+    #plunge-select:hover {
         box-shadow: var(--box-shadow);
     }
 
@@ -142,7 +268,7 @@ footer {
     }
 
     .menu-icon:hover {
-        background-color: #FFFFFF;
+        background-color: #ffffff75;
     }
     
     .menu-icon:active {
