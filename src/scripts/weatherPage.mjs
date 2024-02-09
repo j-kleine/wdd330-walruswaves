@@ -29,20 +29,20 @@ function weatherPageContent() {
     </div>
     <div id="weather-info-container">
         <div id="no-scrollbar-container">
-            <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Windspeed</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Direction</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Waterlevel</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Waveheight</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">UV-Index</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Sunrise</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Sunset</span><span class="weather-info-value">VALUE</span></div>
         </div>
     </div>
     `
 }
 
 export function loadWeatherPage() {
-    // add eventlistener 'click' to home icon
+    // add eventlistener 'click' to weather icon
     document.querySelector('#weather').addEventListener('click', () => {
         // set document title to '... Weather'
         document.title = 'walrusWaves | Weather';

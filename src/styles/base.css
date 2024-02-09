@@ -293,6 +293,7 @@ footer {
 
 #settings-container {
     margin: 5vh auto;
+    padding: .5rem 0;
     width: 90vw;
     max-width: 33.75rem;
     border-radius: var(--border-radius-round-corners);
@@ -374,6 +375,53 @@ footer {
     -webkit-backdrop-filter: brightness(1) var(--backdrop-filter);
     backdrop-filter: brightness(1) var(--backdrop-filter);
     text-decoration: underline;
+}
+
+#impressum-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 70vh;
+    border-radius: var(--border-radius-round-corners);
+    -webkit-backdrop-filter: brightness(1.125) var(--backdrop-filter);
+    backdrop-filter: brightness(1.125) var(--backdrop-filter);
+}
+
+#close-impressum {
+    padding: 1rem 0;
+    font-family: var(--standard-font);
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#impressum-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem 2rem;
+
+    font-family: var(--standard-font);
+}
+
+#attributions-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem 2rem;
+
+    font-family: var(--standard-font);
 }
 
 
@@ -478,6 +526,10 @@ footer {
         font-size: 1.5625rem;
     }
 
+    #settings-container {
+        border-radius: 4rem;
+    }
+
     .settings-unit-desc {
         font-size: 1.25rem;
         line-height: 1.5625rem;
@@ -507,6 +559,10 @@ footer {
         -webkit-backdrop-filter: brightness(.5) var(--backdrop-filter);
         backdrop-filter: brightness(.5) var(--backdrop-filter);
         color: var(--contrast-color);
+        text-decoration: underline;
+    }
+
+    #close-impressum:hover {
         text-decoration: underline;
     }
 

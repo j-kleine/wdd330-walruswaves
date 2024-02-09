@@ -40,12 +40,53 @@ function settingsPageContent() {
             </div>
         </div>
     </div>
-    <div id="impressum"><span id="about-link">About</span</div>
+    <div id="impressum">
+        <span id="about-link">About</span>
+    </div>
+    <div id="impressum-popup"></div>
     `
 }
 
+function impressumContent() {
+    return `
+    <div id="impressum-message">
+        <span>@2024 walrusWaves</span>
+        <span>Joschua Kleine</span>
+        <span>WDD330 Final Project</span>
+        <span>BYU-I Course</span>
+    </div>
+    <div id="attributions-message">
+        <span>Fonts by Google API</span>
+        <span>Menu Icons by Microsoft</span>
+        <span>Image by Matt Hardy via Pexels</span>
+    </div>
+    <span id="close-impressum">Close</span>
+    `
+}
+
+function renderImpressum() {
+    // add eventlistener 'click' to about button
+    document.querySelector('#about-link').addEventListener('click', () => {
+        // hide impressum popup
+        document.querySelector('#impressum-popup').style.display = "none";
+
+        // call impressumContent function to populate impressum popup
+        document.querySelector('#impressum-popup').insertAdjacentHTML('afterbegin', impressumContent());
+        document.querySelector('#impressum-popup').style.display = "flex";
+        
+        // console.log(impressumContent());
+
+        // add eventlistener 'click' to close impressum button
+        document.querySelector('#close-impressum').addEventListener('click', () => {
+            // empty out impressum popup to close
+            document.querySelector('#impressum-popup').style.display = "none";
+            removePageContent('#impressum-popup');
+        })
+    })
+}
+
 export function loadSettingsPage() {
-    // add eventlistener 'click' to home icon
+    // add eventlistener 'click' to settings icon
     document.querySelector('#settings').addEventListener('click', () => {
         // set document title to '... Settings'
         document.title = 'walrusWaves | Settings';
@@ -58,5 +99,6 @@ export function loadSettingsPage() {
 
         // add active circle to home and remove other two in bottom menubar
         switchActiveMenuIcon('#settings', '#home', '#weather');
+        renderImpressum();
     })
 }
