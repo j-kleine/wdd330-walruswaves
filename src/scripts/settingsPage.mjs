@@ -12,30 +12,35 @@ function settingsPageContent() {
             </select>
         </label>
     </div>
-    <div id="weather-widget-box">
-        <div class="aw-box">
-            <span class="aw-box-labels">AIR</span>
-            <span id="air-temp-value" class="aw-box-values">7°</span>
-            <span class="aw-box-units">CELSIUS</span>
+    <h3 class="settings-heading">Settings</h3>
+    <h4 class="settings-subheading">Units</h4>
+    <div id="settings-container">
+        <div>
+            <span class="settings-unit-desc">Temperature</span>
+            <div class="settings-unit-value">
+                <span id="settings-temp-c" class="settings-active settings-metric">°C</span>
+                <span class="vertical-divider">/</span>
+                <span id="settings-temp-f" class="settings-inactive settings-imperial">°F</span>
+            </div>
         </div>
         <div>
-            <img id="weather-icon" src="https://openweathermap.org/img/wn/02d@4x.png" alt="">
+            <span class="settings-unit-desc">Speed</span>
+            <div class="settings-unit-value">
+                <span id="settings-speed-kmh" class="settings-active settings-metric">kmh</span>
+                <span class="vertical-divider">/</span>
+                <span id="settings-speed-mph" class="settings-inactive settings-imperial">mph</span>
+            </div>
         </div>
-        <div class="aw-box">
-            <span class="aw-box-labels">WATER</span>
-            <span id="water-temp-value" class="aw-box-values">3°</span>
-            <span class="aw-box-units">CELSIUS</span>
+        <div>
+            <span class="settings-unit-desc">Length</span>
+            <div class="settings-unit-value">
+                <span id="settings-length-cm" class="settings-active settings-metric">cm</span>
+                <span class="vertical-divider">/</span>
+                <span id="settings-length-in" class="settings-inactive settings-imperial">in</span>
+            </div>
         </div>
     </div>
-    <div id="weather-info-container">
-        <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-        <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-        <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-        <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-        <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-        <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-        <div><span class="weather-info-desc">Description</span><span class="weather-info-value">VALUE</span></div>
-    </div>
+    <div id="impressum"><span id="about-link">About</span</div>
     `
 }
 
