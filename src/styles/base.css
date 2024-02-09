@@ -361,6 +361,7 @@ footer {
 #about-link {
     padding: 1rem 2rem;
     border-radius: var(--border-radius-round-corners);
+    -webkit-backdrop-filter: brightness(1.5) var(--backdrop-filter);
     backdrop-filter: brightness(1.5) var(--backdrop-filter);
     font-family: var(--standard-font);
     font-size: 1rem;
@@ -370,14 +371,10 @@ footer {
 }
 
 #about-link:active {
+    -webkit-backdrop-filter: brightness(1) var(--backdrop-filter);
     backdrop-filter: brightness(1) var(--backdrop-filter);
     text-decoration: underline;
 }
-
-/* #about-link:hover {
-    backdrop-filter: brightness(1) var(--backdrop-filter);
-    text-decoration: underline;
-} */
 
 
 
@@ -507,6 +504,7 @@ footer {
     }
 
     #about-link:hover {
+        -webkit-backdrop-filter: brightness(.5) var(--backdrop-filter);
         backdrop-filter: brightness(.5) var(--backdrop-filter);
         color: var(--contrast-color);
         text-decoration: underline;
