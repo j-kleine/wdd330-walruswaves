@@ -50,15 +50,15 @@ function settingsPageContent() {
 function impressumContent() {
     return `
     <div id="impressum-message">
-        <span>@2024 walrusWaves</span>
+        <span class="impressum-bold">@2024 walrusWaves</span>
         <span>Joschua Kleine</span>
         <span>WDD330 Final Project</span>
         <span>BYU-I Course</span>
     </div>
     <div id="attributions-message">
-        <span>Fonts by Google API</span>
-        <span>Menu Icons by Microsoft</span>
-        <span>Image by Matt Hardy via Pexels</span>
+        <span><span class="impressum-bold">Fonts </span>by Google API</span>
+        <span><span class="impressum-bold">Menu Icons </span>by Microsoft</span>
+        <span><span class="impressum-bold">Image </span>by Matt Hardy via Pexels</span>
     </div>
     <span id="close-impressum">Close</span>
     `
@@ -69,6 +69,7 @@ function renderImpressum() {
     document.querySelector('#about-link').addEventListener('click', () => {
         // hide impressum popup
         document.querySelector('#impressum-popup').style.display = "none";
+        removePageContent('#impressum-popup');
 
         // call impressumContent function to populate impressum popup
         document.querySelector('#impressum-popup').insertAdjacentHTML('afterbegin', impressumContent());
