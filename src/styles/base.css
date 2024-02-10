@@ -49,14 +49,14 @@ body {
     color: var(--primary-color);
 }
 
-/* main {
-    height: 90vh;
-    overflow-y: scroll;
+header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    -webkit-backdrop-filter: var(--backdrop-filter);
+    backdrop-filter: var(--backdrop-filter);
 }
-
-main::-webkit-scrollbar {
-    display: none;
-} */
 
 #brand-name {
     margin: 1rem;
@@ -65,6 +65,10 @@ main::-webkit-scrollbar {
     font-size: 9vw;
     font-weight: 400;
     letter-spacing: .75rem;
+}
+
+main {
+    margin-top: 20vh;
 }
 
 footer {
@@ -99,6 +103,27 @@ footer {
 
 .active-page {
     border: 1px solid var(--border-color);
+}
+
+/* scrollbar width */
+::-webkit-scrollbar {
+    width: .25rem;
+}
+
+/* scrollbar Arrow buttons */
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* scrollbar Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: var(--border-radius-circle-corners);
+}
+
+/* scrollbar Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
 }
 
 
@@ -227,6 +252,7 @@ footer {
 
 /* scrollbar Arrow buttons */
 #no-scrollbar-container::-webkit-scrollbar-button {
+    display: contents;
     background: transparent;
     height: 3.5rem;
 }
@@ -378,7 +404,7 @@ footer {
 }
 
 #impressum-popup {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -422,6 +448,10 @@ footer {
     padding: 1rem 2rem;
 
     font-family: var(--standard-font);
+}
+
+.impressum-bold {
+    font-weight: bold;
 }
 
 
