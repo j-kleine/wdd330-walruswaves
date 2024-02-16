@@ -7,9 +7,9 @@ function homePageContent() {
         <label>
             <select name="" id="plunge-select" class="home-plunge-select" title="Find your plunge location!">
                 <option class="option-disabled" value="" disabled="" selected="">Find your location!</option>
-                <option value="">Espergærde</option>
-                <option value="">Jammerbugten</option>
-                <option value="">Schausende</option>
+                <option value="Espergærde">Espergærde</option>
+                <option value="Jammerbugten">Jammerbugten</option>
+                <option value="Schausende">Schausende</option>
             </select>
         </label>
     </div>

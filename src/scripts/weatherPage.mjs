@@ -6,9 +6,9 @@ function weatherPageContent() {
         <label>
             <select name="" id="plunge-select" class="weather-plunge-select" title="Find your plunge location!">
                 <option class="option-disabled" value="" disabled="" selected="">Your Location</option>
-                <option value="">Espergærde</option>
-                <option value="">Jammerbugten</option>
-                <option value="">Schausende</option>
+                <option value="Espergærde">Espergærde</option>
+                <option value="Jammerbugten">Jammerbugten</option>
+                <option value="Schausende">Schausende</option>
             </select>
         </label>
     </div>
@@ -29,13 +29,13 @@ function weatherPageContent() {
     </div>
     <div id="weather-info-container">
         <div id="no-scrollbar-container">
-            <div><span class="weather-info-desc">Windspeed</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Direction</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Waterlevel</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Waveheight</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">UV-Index</span><span class="weather-info-value">VALUE</span></div>
             <div><span class="weather-info-desc">Sunrise</span><span class="weather-info-value">VALUE</span></div>
             <div><span class="weather-info-desc">Sunset</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Waterlevel</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Tide</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Windspeed</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Direction</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">UV-Index</span><span class="weather-info-value">VALUE</span></div>
         </div>
     </div>
     `
