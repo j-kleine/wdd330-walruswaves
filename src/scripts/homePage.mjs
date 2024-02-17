@@ -38,6 +38,7 @@ export function renderHomePage() {
 export function loadHomePage() {
     // add eventlistener 'click' to home icon
     document.querySelector('#home').addEventListener('click', () => {
+        // clear localStorage when Home is clicked -> no saved location for future website loads
         localStorage.removeItem('select-location');
         renderHomePage();
     })
