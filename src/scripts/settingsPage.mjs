@@ -1,4 +1,5 @@
 import { removePageContent, switchActiveMenuIcon } from "./switchPage.mjs";
+import { getSavedLocation, displaySavedLocation, setSavedLocation } from "./utils.mjs";
 
 function settingsPageContent() {
     return `
@@ -86,20 +87,29 @@ function renderImpressum() {
     })
 }
 
+function renderSettingsPage() {
+    // set document title to '... Settings'
+    document.title = 'walrusWaves | Settings';
+
+    // empty out main to prepare for reload
+    removePageContent('main');
+
+    // call homePageContent function to populate <main>
+    document.querySelector('main').insertAdjacentHTML('afterbegin', settingsPageContent());
+
+    // add active circle to home and remove other two in bottom menubar
+    switchActiveMenuIcon('#settings', '#home', '#weather');
+
+    const selectedLocation = getSavedLocation();
+    displaySavedLocation(selectedLocation);
+    setSavedLocation();
+    
+    renderImpressum();
+}
+
 export function loadSettingsPage() {
     // add eventlistener 'click' to settings icon
     document.querySelector('#settings').addEventListener('click', () => {
-        // set document title to '... Settings'
-        document.title = 'walrusWaves | Settings';
-        
-        // empty out main to prepare for reload
-        removePageContent('main');
-
-        // call homePageContent function to populate <main>
-        document.querySelector('main').insertAdjacentHTML('afterbegin', settingsPageContent());
-
-        // add active circle to home and remove other two in bottom menubar
-        switchActiveMenuIcon('#settings', '#home', '#weather');
-        renderImpressum();
+        renderSettingsPage();
     })
 }

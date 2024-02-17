@@ -1,4 +1,5 @@
 import { removePageContent, switchActiveMenuIcon } from "./switchPage.mjs";
+import { getSavedLocation, displaySavedLocation, setSavedLocation } from "./utils.mjs";
 
 function homePageContent() {
     return `
@@ -16,28 +17,28 @@ function homePageContent() {
     `
 }
 
-export function loadHomePage() {
+export function renderHomePage() {
     // set document title to '... Home'
     document.title = 'walrusWaves | Home';
-
-    // insert on first load of website
-    document.querySelector('main').insertAdjacentHTML('afterbegin', homePageContent());
     
+    // empty out main to prepare for reload
+    removePageContent('main');
+
+    // call homePageContent function to populate <main>
+    document.querySelector('main').insertAdjacentHTML('afterbegin', homePageContent());
+
     // add active circle to home and remove other two in bottom menubar
     switchActiveMenuIcon('#home', '#weather', '#settings');
 
+    const selectedLocation = getSavedLocation();
+    displaySavedLocation(selectedLocation);
+    setSavedLocation();
+
+}
+
+export function loadHomePage() {
     // add eventlistener 'click' to home icon
     document.querySelector('#home').addEventListener('click', () => {
-        // set document title to '... Home'
-        document.title = 'walrusWaves | Home';
-        
-        // empty out main to prepare for reload
-        removePageContent('main');
-
-        // call homePageContent function to populate <main>
-        document.querySelector('main').insertAdjacentHTML('afterbegin', homePageContent());
-
-        // add active circle to home and remove other two in bottom menubar
-        switchActiveMenuIcon('#home', '#weather', '#settings');
+        renderHomePage();
     })
 }

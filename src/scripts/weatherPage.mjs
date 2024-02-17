@@ -1,4 +1,5 @@
 import { removePageContent, switchActiveMenuIcon } from "./switchPage.mjs";
+import { getSavedLocation, displaySavedLocation, setSavedLocation } from "./utils.mjs";
 
 function weatherPageContent() {
     return `
@@ -41,19 +42,27 @@ function weatherPageContent() {
     `
 }
 
+export function renderWeatherPage() {
+    // set document title to '... Weather'
+    document.title = 'walrusWaves | Weather';
+    
+    // empty out main to prepare for reload
+    removePageContent('main');
+
+    // call homePageContent function to populate <main>
+    document.querySelector('main').insertAdjacentHTML('afterbegin', weatherPageContent());
+
+    // add active circle to home and remove other two in bottom menubar
+    switchActiveMenuIcon('#weather', '#home', '#settings');
+
+    const selectedLocation = getSavedLocation();
+    displaySavedLocation(selectedLocation);
+    setSavedLocation();
+}
+
 export function loadWeatherPage() {
     // add eventlistener 'click' to weather icon
     document.querySelector('#weather').addEventListener('click', () => {
-        // set document title to '... Weather'
-        document.title = 'walrusWaves | Weather';
-        
-        // empty out main to prepare for reload
-        removePageContent('main');
-
-        // call homePageContent function to populate <main>
-        document.querySelector('main').insertAdjacentHTML('afterbegin', weatherPageContent());
-
-        // add active circle to home and remove other two in bottom menubar
-        switchActiveMenuIcon('#weather', '#home', '#settings');
+        renderWeatherPage();
     })
 }
