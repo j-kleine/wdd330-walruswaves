@@ -32,13 +32,13 @@ export function renderHomePage() {
 
     const selectedLocation = getSavedLocation();
     displaySavedLocation(selectedLocation);
-    setSavedLocation();
-
+    setSavedLocation(selectedLocation);
 }
 
 export function loadHomePage() {
     // add eventlistener 'click' to home icon
     document.querySelector('#home').addEventListener('click', () => {
+        localStorage.removeItem('select-location');
         renderHomePage();
     })
 }

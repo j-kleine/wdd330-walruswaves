@@ -10,13 +10,17 @@ export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
 
-export function setSavedLocation() {
-  // add eventlistener 'change' to dropdown
-  document.querySelector('#plunge-select').addEventListener('change', (event) => {
-    const selectedLocation = event.target.value;
-    setLocalStorage('select-location', selectedLocation);
+export function setSavedLocation(selectedLocation) {
+  if (selectedLocation) {
     renderWeatherPage();
-  });
+  } else {
+    // add eventlistener 'change' to dropdown
+    document.querySelector('#plunge-select').addEventListener('change', (event) => {
+      const selectedLocation = event.target.value;
+      setLocalStorage('select-location', selectedLocation);
+      renderWeatherPage();
+    });
+  }
 }
 
 export function getSavedLocation() {
