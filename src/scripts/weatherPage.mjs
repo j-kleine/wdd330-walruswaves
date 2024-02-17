@@ -1,4 +1,5 @@
 import { removePageContent, switchActiveMenuIcon } from "./switchPage.mjs";
+import { getSavedLocation, displaySavedLocation, setSavedLocation } from "./utils.mjs";
 
 function weatherPageContent() {
     return `
@@ -29,31 +30,39 @@ function weatherPageContent() {
     </div>
     <div id="weather-info-container">
         <div id="no-scrollbar-container">
-            <div><span class="weather-info-desc">Sunrise</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Sunset</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Sunrise</span><span id="sunrise-time" class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Sunset</span><span id="sunset-time" class="weather-info-value">VALUE</span></div>
             <div><span class="weather-info-desc">Waterlevel</span><span class="weather-info-value">VALUE</span></div>
             <div><span class="weather-info-desc">Tide</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Windspeed</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Direction</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">UV-Index</span><span class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Windspeed</span><span id="windspeed" class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Direction</span><span id="wind-direction" class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">UV-Index</span><span id="uv-index" class="weather-info-value">VALUE</span></div>
         </div>
     </div>
     `
 }
 
+export function renderWeatherPage() {
+    // set document title to '... Weather'
+    document.title = 'walrusWaves | Weather';
+    
+    // empty out main to prepare for reload
+    removePageContent('main');
+
+    // call homePageContent function to populate <main>
+    document.querySelector('main').insertAdjacentHTML('afterbegin', weatherPageContent());
+
+    // add active circle to home and remove other two in bottom menubar
+    switchActiveMenuIcon('#weather', '#home', '#settings');
+
+    const selectedLocation = getSavedLocation();
+    displaySavedLocation(selectedLocation);
+    setSavedLocation();
+}
+
 export function loadWeatherPage() {
     // add eventlistener 'click' to weather icon
     document.querySelector('#weather').addEventListener('click', () => {
-        // set document title to '... Weather'
-        document.title = 'walrusWaves | Weather';
-        
-        // empty out main to prepare for reload
-        removePageContent('main');
-
-        // call homePageContent function to populate <main>
-        document.querySelector('main').insertAdjacentHTML('afterbegin', weatherPageContent());
-
-        // add active circle to home and remove other two in bottom menubar
-        switchActiveMenuIcon('#weather', '#home', '#settings');
+        renderWeatherPage();
     })
 }
