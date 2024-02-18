@@ -122,7 +122,7 @@ export function displayCurrentWeather(data) {
   // console.log(sunsetTimestamp*1000);
   sunsetTime.innerHTML = new Date(sunsetTimestamp*1000).toLocaleTimeString(undefined, {hour: '2-digit', minute:'2-digit'});
 
-  windspeed.innerHTML = `${data.wind.speed} km/h`;
+  windspeed.innerHTML = `${data.wind.speed} m/s`;
   windDirection.innerHTML = `${data.wind.deg}°`;
 
 }

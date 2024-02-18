@@ -27,7 +27,7 @@ function settingsPageContent() {
         <div>
             <span class="settings-unit-desc">Speed</span>
             <div class="settings-unit-value">
-                <span id="settings-speed-kmh" class="settings-active settings-metric">kmh</span>
+                <span id="settings-speed-kmh" class="settings-active settings-metric">ms</span>
                 <span class="vertical-divider">/</span>
                 <span id="settings-speed-mph" class="settings-inactive settings-imperial">mph</span>
             </div>
