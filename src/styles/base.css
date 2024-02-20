@@ -228,7 +228,7 @@ footer {
     width: 20vw;
     max-width: 6.25rem;
     position: relative;
-    top: -25px;
+    top: -1rem;
 }
 
 #weather-info-container {
