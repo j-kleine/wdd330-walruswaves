@@ -17,7 +17,7 @@ function weatherPageContent() {
         <div class="aw-box">
             <span class="aw-box-labels">AIR</span>
             <span id="air-temp-value" class="aw-box-values">--</span>
-            <span class="aw-box-units">CELSIUS</span>
+            <span class="aw-box-units air-temp-unit">--</span>
         </div>
         <div>
             <img id="weather-icon" src="" alt="">
@@ -25,7 +25,7 @@ function weatherPageContent() {
         <div class="aw-box">
             <span class="aw-box-labels">WATER</span>
             <span id="water-temp-value" class="aw-box-values">--</span>
-            <span class="aw-box-units">CELSIUS</span>
+            <span class="aw-box-units water-temp-unit">--</span>
         </div>
     </div>
     <div id="weather-info-container">
