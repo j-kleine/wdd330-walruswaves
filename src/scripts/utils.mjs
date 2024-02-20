@@ -105,7 +105,7 @@ export function displayCurrentWeather(data) {
   if (roundedAirTemp == -0) {
       roundedAirTemp = 0;
   }
-  airTemp.innerHTML = `${roundedAirTemp}&deg;C`;
+  airTemp.innerHTML = `${roundedAirTemp}&deg;`;
   data.weather.forEach((event) => {
       const iconsrc = `https://openweathermap.org/img/wn/${event.icon}@4x.png`;
       let main = event.main;

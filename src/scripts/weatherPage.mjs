@@ -16,7 +16,7 @@ function weatherPageContent() {
     <div id="weather-widget-box">
         <div class="aw-box">
             <span class="aw-box-labels">AIR</span>
-            <span id="air-temp-value" class="aw-box-values">7°</span>
+            <span id="air-temp-value" class="aw-box-values">na</span>
             <span class="aw-box-units">CELSIUS</span>
         </div>
         <div>
@@ -24,19 +24,19 @@ function weatherPageContent() {
         </div>
         <div class="aw-box">
             <span class="aw-box-labels">WATER</span>
-            <span id="water-temp-value" class="aw-box-values">3°</span>
+            <span id="water-temp-value" class="aw-box-values">na</span>
             <span class="aw-box-units">CELSIUS</span>
         </div>
     </div>
     <div id="weather-info-container">
         <div id="no-scrollbar-container">
-            <div><span class="weather-info-desc">Sunrise</span><span id="sunrise-time" class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Sunset</span><span id="sunset-time" class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Waterlevel</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Tide</span><span class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Windspeed</span><span id="windspeed" class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">Direction</span><span id="wind-direction" class="weather-info-value">VALUE</span></div>
-            <div><span class="weather-info-desc">UV-Index</span><span id="uv-index" class="weather-info-value">VALUE</span></div>
+            <div><span class="weather-info-desc">Sunrise</span><span id="sunrise-time" class="weather-info-value">na</span></div>
+            <div><span class="weather-info-desc">Sunset</span><span id="sunset-time" class="weather-info-value">na</span></div>
+            <div><span class="weather-info-desc">Waterlevel</span><span class="weather-info-value">na</span></div>
+            <div><span class="weather-info-desc">Tide</span><span class="weather-info-value">na</span></div>
+            <div><span class="weather-info-desc">Windspeed</span><span id="windspeed" class="weather-info-value">na</span></div>
+            <div><span class="weather-info-desc">Direction</span><span id="wind-direction" class="weather-info-value">na</span></div>
+            <div><span class="weather-info-desc">UV-Index</span><span id="uv-index" class="weather-info-value">na</span></div>
         </div>
     </div>
     `
@@ -64,5 +64,7 @@ export function loadWeatherPage() {
     // add eventlistener 'click' to weather icon
     document.querySelector('#weather').addEventListener('click', () => {
         renderWeatherPage();
+        // page reload to refresh API data
+        window.location.reload();
     })
 }
