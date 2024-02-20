@@ -90,6 +90,7 @@ footer {
     display: flex;
     justify-content: space-around;
     width: 75%;
+    max-width: 375px;
 }
 
 .menu-icon {
@@ -268,7 +269,7 @@ footer {
     background: var(--secondary-color);
 }
 
-#no-scrollbar-container div {
+#no-scrollbar-container > div {
     display: flex;
     justify-content: space-between;
     padding: 1rem 2rem;
@@ -291,6 +292,21 @@ footer {
     font-family: var(--special-font);
     font-size: 5vw;
     font-weight: bold;
+}
+
+#tide-events {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+#tide-event {
+    /* background-color: green; */
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    border-bottom: none;
 }
 
 
@@ -469,6 +485,12 @@ footer {
 
     footer:hover {
         box-shadow: var(--box-shadow);
+        /* max-width: 550px; */
+    }
+
+    footer:hover .menu-icon {
+        padding-top: .5rem;
+        padding-bottom: 2rem;
     }
 
     .menu-icon {
