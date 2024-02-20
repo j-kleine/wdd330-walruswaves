@@ -108,8 +108,6 @@ export function displayCurrentWeather(data) {
   airTemp.innerHTML = `${roundedAirTemp}&deg;`;
   data.weather.forEach((event) => {
       const iconsrc = `https://openweathermap.org/img/wn/${event.icon}@4x.png`;
-      let main = event.main;
-      let desc = event.description;
 
       weatherIcon.setAttribute('src', iconsrc);
       weatherIcon.setAttribute('alt', `weather icon ${event.main} - ${event.description}`);
