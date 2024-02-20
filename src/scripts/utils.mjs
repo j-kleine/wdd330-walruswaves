@@ -1,4 +1,5 @@
 import { renderWeatherPage } from "./weatherPage.mjs";
+import { checkStoredUnit } from "./unitSwitcher.mjs";
 
 // save data to local storage
 export function setLocalStorage(key, data) {
@@ -81,7 +82,9 @@ async function createWeatherURL(selectedLocation) {
                     // const APIkey = '96b776019148012b0ca89f700b1532be';
 
                     // const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=${unit}&appid=${APIkey}`;
+        
         // console.log(weatherURL);
+        
         return weatherURL
       })
 }
@@ -132,6 +135,9 @@ async function waterAPI(URL) {
 }
 
 function displayCurrentWeather(data) {
+  const tempUnit = checkStoredUnit('settings-temp');
+  const speedUnit = checkStoredUnit('settings-speed');
+
   const airTemp = document.querySelector('#air-temp-value');
   const weatherIcon = document.querySelector('#weather-icon');
   const windSpeed = document.querySelector('#windspeed');
@@ -140,7 +146,14 @@ function displayCurrentWeather(data) {
 
   // console.log(JSON.stringify(data));
 
-  let roundedAirTemp = data.current.temp_c.toFixed(0);
+  let roundedAirTemp;
+  if (tempUnit == 'imperial') {
+    roundedAirTemp = data.current.temp_f.toFixed(0);
+    document.querySelector('.air-temp-unit').innerHTML = 'Fahrenheit';
+  } else {
+    roundedAirTemp = data.current.temp_c.toFixed(0);
+    document.querySelector('.air-temp-unit').innerHTML = 'Celsius';
+  }
   if (roundedAirTemp == -0) {
       roundedAirTemp = 0;
   }
@@ -149,7 +162,13 @@ function displayCurrentWeather(data) {
   weatherIcon.setAttribute('src', iconsrc);
   weatherIcon.setAttribute('alt', `weather icon for "${data.current.condition.text}" - weatherapi.com`);
   
-  windSpeed.innerHTML = `${data.current.wind_kph} km/h`;
+  if (speedUnit == 'imperial') {
+    windSpeed.innerHTML = `${data.current.wind_mph} mph`;
+
+  } else {
+    windSpeed.innerHTML = `${data.current.wind_kph} kmh`;
+  }
+  
   windDirection.innerHTML = `${data.current.wind_dir}`;
 
   uvIndex.innerHTML = data.current.uv.toFixed(0);
@@ -157,13 +176,23 @@ function displayCurrentWeather(data) {
 }
 
 function displayCurrentWater(data) {
+  const tempUnit = checkStoredUnit('settings-temp');
+  const lengthUnit = checkStoredUnit('settings-length');
+
   const waterTemp = document.querySelector('#water-temp-value');
   const sunriseTime = document.querySelector('#sunrise-time');
   const sunsetTime = document.querySelector('#sunset-time');
 
   // console.log(JSON.stringify(data));
 
-  let roundedWaterTemp = data.forecast.forecastday[0].hour[7].water_temp_c.toFixed(0);
+  let roundedWaterTemp;
+  if (tempUnit == 'imperial') {
+    roundedWaterTemp = data.forecast.forecastday[0].hour[7].water_temp_f.toFixed(0);
+    document.querySelector('.water-temp-unit').innerHTML = 'Fahrenheit';
+  } else {
+    roundedWaterTemp = data.forecast.forecastday[0].hour[7].water_temp_c.toFixed(0);
+    document.querySelector('.water-temp-unit').innerHTML = 'Celsius';
+  }
   if (roundedWaterTemp == -0) {
       roundedWaterTemp = 0;
   }
@@ -194,7 +223,16 @@ function displayCurrentWater(data) {
 
     let tideHeight = document.createElement('span');
     tideHeight.setAttribute('class', 'tide-height weather-info-value');
-    tideHeight.textContent = '+' + Number(event.tide_height_mt).toFixed(1) + ' m';
+    let tideHeightMultiplier;
+    let unit;
+    if (lengthUnit == 'imperial') {
+      tideHeightMultiplier = 3.281;
+      unit = 'ft';
+    } else {
+      tideHeightMultiplier = 1;
+      unit = 'm';
+    }
+    tideHeight.textContent = '+' + (Number(event.tide_height_mt) * tideHeightMultiplier).toFixed(1) + ' ' + unit;
     tideEvent.appendChild(tideHeight);
   })
 }

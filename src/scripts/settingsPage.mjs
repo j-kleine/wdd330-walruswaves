@@ -1,5 +1,6 @@
 import { removePageContent, switchActiveMenuIcon } from "./switchPage.mjs";
 import { getSavedLocation, displaySavedLocation, setSavedLocation } from "./utils.mjs";
+import { displayStoredUnitChoice, storeUnit } from "./unitSwitcher.mjs";
 
 function settingsPageContent() {
     return `
@@ -16,28 +17,28 @@ function settingsPageContent() {
     <h3 class="settings-heading">Settings</h3>
     <h4 class="settings-subheading">Units</h4>
     <div id="settings-container">
-        <div>
+        <div id="change-temp">
             <span class="settings-unit-desc">Temperature</span>
             <div class="settings-unit-value">
-                <span id="settings-temp-c" class="settings-active settings-metric">°C</span>
+                <span id="settings-temp-c" class="metric">°C</span>
                 <span class="vertical-divider">/</span>
-                <span id="settings-temp-f" class="settings-inactive settings-imperial">°F</span>
+                <span id="settings-temp-f" class="imperial">°F</span>
             </div>
         </div>
-        <div>
+        <div id="change-speed">
             <span class="settings-unit-desc">Speed</span>
             <div class="settings-unit-value">
-                <span id="settings-speed-kmh" class="settings-active settings-metric">kmh</span>
+                <span id="settings-speed-kmh" class="metric">kmh</span>
                 <span class="vertical-divider">/</span>
-                <span id="settings-speed-mph" class="settings-inactive settings-imperial">mph</span>
+                <span id="settings-speed-mph" class="imperial">mph</span>
             </div>
         </div>
-        <div>
+        <div id="change-length">
             <span class="settings-unit-desc">Length</span>
             <div class="settings-unit-value">
-                <span id="settings-length-cm" class="settings-active settings-metric">m</span>
+                <span id="settings-length-m" class="metric">m</span>
                 <span class="vertical-divider">/</span>
-                <span id="settings-length-in" class="settings-inactive settings-imperial">ft</span>
+                <span id="settings-length-ft" class="imperial">ft</span>
             </div>
         </div>
     </div>
@@ -105,6 +106,18 @@ function renderSettingsPage() {
     setSavedLocation();
     
     renderImpressum();
+
+    displayStoredUnitChoice('settings-temp', '#settings-temp-f', '#settings-temp-c');
+    displayStoredUnitChoice('settings-speed', '#settings-speed-mph', '#settings-speed-kmh');
+    displayStoredUnitChoice('settings-length', '#settings-length-ft', '#settings-length-m');
+
+    storeUnit('settings-temp', '#settings-temp-c', '#settings-temp-f');
+    storeUnit('settings-temp', '#settings-temp-f', '#settings-temp-c');
+    storeUnit('settings-speed', '#settings-speed-kmh', '#settings-speed-mph');
+    storeUnit('settings-speed', '#settings-speed-mph', '#settings-speed-kmh');
+    storeUnit('settings-length', '#settings-length-m', '#settings-length-ft');
+    storeUnit('settings-length', '#settings-length-ft', '#settings-length-m');
+
 }
 
 export function loadSettingsPage() {

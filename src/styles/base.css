@@ -221,6 +221,7 @@ footer {
 .aw-box-units {
     font-family: var(--standard-font);
     font-size: 3.5vw;
+    text-transform: uppercase;
     color: var(--secondary-color);
 }
 
@@ -376,24 +377,21 @@ footer {
     margin-right: 1rem;
 }
 
-.settings-metric {
+.metric {
     text-align: right;
 }
 
-.settings-active {
-    width: 3.25rem;
-    color: var(--primary-color);
-    font-family: var(--special-font);
-    font-size: 5vw;
-    font-weight: bold;
-}
-
-.settings-inactive {
+.metric, .imperial {
     width: 3.25rem;
     color: var(--border-color);
     font-family: var(--special-font);
     font-size: 5vw;
     font-weight: bold;
+    transition: var(--transition);
+}
+
+.settings-active {
+    color: var(--primary-color);
 }
 
 .vertical-divider {
@@ -594,19 +592,8 @@ footer {
         line-height: 1.5625rem;
     }
 
-    .settings-active {
+    .metric, .imperial {
         font-size: 1.5625rem;
-    }
-
-    .settings-active:hover {
-        cursor: pointer;
-    }
-    
-    .settings-inactive {
-        font-size: 1.5625rem;
-    }
-
-    .settings-inactive:hover {
         cursor: pointer;
     }
     
