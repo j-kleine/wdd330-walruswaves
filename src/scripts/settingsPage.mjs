@@ -37,7 +37,7 @@ function settingsPageContent() {
             <div class="settings-unit-value">
                 <span id="settings-length-cm" class="settings-active settings-metric">m</span>
                 <span class="vertical-divider">/</span>
-                <span id="settings-length-in" class="settings-inactive settings-imperial">in</span>
+                <span id="settings-length-in" class="settings-inactive settings-imperial">ft</span>
             </div>
         </div>
     </div>
