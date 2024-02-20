@@ -189,7 +189,7 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 2.5vh auto;
+    margin: 3vh auto;
     width: 90vw;
     max-width: 33.75rem;
     -webkit-backdrop-filter: var(--backdrop-filter);
@@ -225,8 +225,10 @@ footer {
 }
 
 #weather-icon {
-    width: 35vw;
-    max-width: 13.125rem;
+    width: 20vw;
+    max-width: 6.25rem;
+    position: relative;
+    top: -25px;
 }
 
 #weather-info-container {
@@ -301,12 +303,17 @@ footer {
     gap: .5rem;
 }
 
-#tide-event {
+.tide-event {
     /* background-color: green; */
     display: flex;
     justify-content: space-between;
     padding: 0 1rem;
     border-bottom: none;
+}
+
+.tide-status {
+    font-weight: 400;
+    text-transform: lowercase;
 }
 
 

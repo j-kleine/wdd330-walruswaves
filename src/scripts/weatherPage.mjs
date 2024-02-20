@@ -20,7 +20,7 @@ function weatherPageContent() {
             <span class="aw-box-units">CELSIUS</span>
         </div>
         <div>
-            <img id="weather-icon" src="https://openweathermap.org/img/wn/02d@4x.png" alt="">
+            <img id="weather-icon" src="" alt="">
         </div>
         <div class="aw-box">
             <span class="aw-box-labels">WATER</span>
@@ -32,12 +32,7 @@ function weatherPageContent() {
         <div id="no-scrollbar-container">
             <div><span class="weather-info-desc">Sunrise</span><span id="sunrise-time" class="weather-info-value">--</span></div>
             <div><span class="weather-info-desc">Sunset</span><span id="sunset-time" class="weather-info-value">--</span></div>
-            <div id="tide-events"><span class="weather-info-desc">Tides</span>
-                <div id="tide-event"><span class="weather-info-value">Time</span><span class="weather-info-value">Low/High</span></div>
-                <div id="tide-event"><span class="weather-info-value">Time</span><span class="weather-info-value">Low/High</span></div>
-                <div id="tide-event"><span class="weather-info-value">Time</span><span class="weather-info-value">Low/High</span></div>
-                <div id="tide-event"><span class="weather-info-value">Time</span><span class="weather-info-value">Low/High</span></div>                
-            </div>
+            <div id="tide-events"><span class="weather-info-desc">Tides</span></div>
             <div><span class="weather-info-desc">Windspeed</span><span id="windspeed" class="weather-info-value">--</span></div>
             <div><span class="weather-info-desc">Direction</span><span id="wind-direction" class="weather-info-value">--</span></div>
             <div><span class="weather-info-desc">UV-Index</span><span id="uv-index" class="weather-info-value">--</span></div>

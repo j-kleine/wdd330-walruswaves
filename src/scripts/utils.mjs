@@ -13,8 +13,11 @@ export function getLocalStorage(key) {
 export function setSavedLocation(selectedLocation) {
   if (selectedLocation) {
     renderWeatherPage();
-    getWeatherURL(selectedLocation).then(weatherURL => {
+    createWeatherURL(selectedLocation).then(weatherURL => {
       weatherAPI(weatherURL);
+    });
+    createWaterURL(selectedLocation).then(waterURL => {
+      waterAPI(waterURL);
     });
   } else {
     // add eventlistener 'change' to dropdown
@@ -22,8 +25,11 @@ export function setSavedLocation(selectedLocation) {
       const selectedLocation = event.target.value;
       setLocalStorage('select-location', selectedLocation);
       renderWeatherPage();
-      getWeatherURL(selectedLocation).then(weatherURL => {
+      createWeatherURL(selectedLocation).then(weatherURL => {
         weatherAPI(weatherURL);
+      });
+      createWaterURL(selectedLocation).then(waterURL => {
+        waterAPI(waterURL);
       });
     });
   }
@@ -60,17 +66,38 @@ async function findCoordinates(selectedLocation) {
   }
 }
 
-async function getWeatherURL(selectedLocation) {
+async function createWeatherURL(selectedLocation) {
   return findCoordinates(selectedLocation).then(coordinate => {
-        const name = coordinate.displayName;
+        // const name = coordinate.displayName;
         const lat = coordinate.lat;
         const lng = coordinate.lng;
-        const unit = 'metric';
-        const APIkey = '96b776019148012b0ca89f700b1532be';
 
-        const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=${unit}&appid=${APIkey}`;
+        const APIkey = 'ef87a209058e4633a7c121100242002';
+        const weatherURL = `https://api.weatherapi.com/v1/current.json?key=${APIkey}&q=${lat},${lng}&aqi=no`;
+
+
+                    // OPENWETHERMAP TEST API
+                    // const unit = 'metric';
+                    // const APIkey = '96b776019148012b0ca89f700b1532be';
+
+                    // const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=${unit}&appid=${APIkey}`;
         // console.log(weatherURL);
         return weatherURL
+      })
+}
+
+async function createWaterURL(selectedLocation) {
+  return findCoordinates(selectedLocation).then(coordinate => {
+        // const name = coordinate.displayName;
+        const lat = coordinate.lat;
+        const lng = coordinate.lng;
+
+        const APIkey = 'ef87a209058e4633a7c121100242002';
+        const waterURL = `https://api.weatherapi.com/v1/marine.json?key=${APIkey}&q=${lat},${lng}&days=1`;
+
+        // console.log(waterURL);
+
+        return waterURL
       })
 }
 
@@ -89,38 +116,85 @@ async function weatherAPI(URL) {
   }
 }
 
-export function displayCurrentWeather(data) {
+async function waterAPI(URL) {
+  try {
+      const response = await fetch(URL);
+      if (response.ok) {
+          const data = await response.json();
+          // console.log(JSON.stringify(data));
+          displayCurrentWater(data);
+      } else {
+          throw Error(await response.text());
+      }
+  } catch (error) {
+      console.log(error);
+  }
+}
+
+function displayCurrentWeather(data) {
   const airTemp = document.querySelector('#air-temp-value');
   const weatherIcon = document.querySelector('#weather-icon');
-  const sunriseTime = document.querySelector('#sunrise-time');
-  const sunsetTime = document.querySelector('#sunset-time');
-  const windspeed = document.querySelector('#windspeed');
+  const windSpeed = document.querySelector('#windspeed');
   const windDirection = document.querySelector('#wind-direction');
   const uvIndex = document.querySelector('#uv-index');
 
   // console.log(JSON.stringify(data));
-  // console.log(airTemp.innerHTML);
 
-  let roundedAirTemp = data.main.temp.toFixed(0);
+  let roundedAirTemp = data.current.temp_c.toFixed(0);
   if (roundedAirTemp == -0) {
       roundedAirTemp = 0;
   }
   airTemp.innerHTML = `${roundedAirTemp}&deg;`;
-  data.weather.forEach((event) => {
-      const iconsrc = `https://openweathermap.org/img/wn/${event.icon}@4x.png`;
-
-      weatherIcon.setAttribute('src', iconsrc);
-      weatherIcon.setAttribute('alt', `weather icon ${event.main} - ${event.description}`);
-  })
+  const iconsrc = data.current.condition.icon;
+  weatherIcon.setAttribute('src', iconsrc);
+  weatherIcon.setAttribute('alt', `weather icon for "${data.current.condition.text}" - weatherapi.com`);
   
-  let sunriseTimestamp = data.sys.sunrise;
-  // console.log(sunriseTimestamp*1000);
-  sunriseTime.innerHTML = new Date(sunriseTimestamp*1000).toLocaleTimeString(undefined, {hour: '2-digit', minute:'2-digit'});
-  let sunsetTimestamp = data.sys.sunset;
-  // console.log(sunsetTimestamp*1000);
-  sunsetTime.innerHTML = new Date(sunsetTimestamp*1000).toLocaleTimeString(undefined, {hour: '2-digit', minute:'2-digit'});
+  windSpeed.innerHTML = `${data.current.wind_kph} km/h`;
+  windDirection.innerHTML = `${data.current.wind_dir}`;
 
-  windspeed.innerHTML = `${data.wind.speed} m/s`;
-  windDirection.innerHTML = `${data.wind.deg}°`;
+  uvIndex.innerHTML = data.current.uv.toFixed(0);
 
+}
+
+function displayCurrentWater(data) {
+  const waterTemp = document.querySelector('#water-temp-value');
+  const sunriseTime = document.querySelector('#sunrise-time');
+  const sunsetTime = document.querySelector('#sunset-time');
+
+  // console.log(JSON.stringify(data));
+
+  let roundedWaterTemp = data.forecast.forecastday[0].hour[7].water_temp_c.toFixed(0);
+  if (roundedWaterTemp == -0) {
+      roundedWaterTemp = 0;
+  }
+  waterTemp.innerHTML = `${roundedWaterTemp}&deg;`;
+
+  sunriseTime.innerHTML = data.forecast.forecastday[0].astro.sunrise;
+  // console.log(sunriseTimeString);
+  // sunriseTime.innerHTML = data.forecast.forecastday[0].astro.sunrise.split(' ')[0];
+
+  sunsetTime.innerHTML = data.forecast.forecastday[0].astro.sunset;
+
+  const tideChart = document.querySelector('#tide-events')
+  data.forecast.forecastday[0].day.tides[0].tide.forEach((event) => {
+    
+    let tideEvent = document.createElement('div');
+    tideEvent.setAttribute('class', 'tide-event');
+    tideChart.appendChild(tideEvent);
+
+    let tideTime = document.createElement('span');
+    tideTime.setAttribute('class', 'tide-time weather-info-value');
+    tideTime.textContent = event.tide_time.split(' ')[1];
+    tideEvent.appendChild(tideTime);
+
+    let tideStatus = document.createElement('span');
+    tideStatus.setAttribute('class', 'tide-status weather-info-value');
+    tideStatus.textContent = event.tide_type;
+    tideEvent.appendChild(tideStatus);
+
+    let tideHeight = document.createElement('span');
+    tideHeight.setAttribute('class', 'tide-height weather-info-value');
+    tideHeight.textContent = '+' + Number(event.tide_height_mt).toFixed(1) + ' m';
+    tideEvent.appendChild(tideHeight);
+  })
 }
