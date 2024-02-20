@@ -64,7 +64,7 @@ export function loadWeatherPage() {
     // add eventlistener 'click' to weather icon
     document.querySelector('#weather').addEventListener('click', () => {
         renderWeatherPage();
-        // page reload to refresh API data
+        // page reload to refresh API data, and if no saved location found automatically return to home page
         window.location.reload();
     })
 }
