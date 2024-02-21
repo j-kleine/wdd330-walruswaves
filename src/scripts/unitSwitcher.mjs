@@ -14,6 +14,12 @@ export function checkStoredUnit(unitKey) {
     }
 }
 
+export function initialUnitSetting() {
+    checkStoredUnit('settings-temp');
+    checkStoredUnit('settings-speed');
+    checkStoredUnit('settings-length');
+}
+
 export function displayStoredUnitChoice(unitKey, imperial, metric) {
     const unit = getLocalStorage(unitKey);
     if (unit == 'imperial') {
