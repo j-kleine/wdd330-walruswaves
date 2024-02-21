@@ -1,5 +1,5 @@
 import { removePageContent, switchActiveMenuIcon } from "./switchPage.mjs";
-import { getSavedLocation, displaySavedLocation, setSavedLocation } from "./utils.mjs";
+import { getSavedLocation, displaySavedLocation, setSavedLocation, renderAnimatedWave } from "./utils.mjs";
 
 function weatherPageContent() {
     return `
@@ -50,6 +50,7 @@ export function renderWeatherPage() {
 
     // call homePageContent function to populate <main>
     document.querySelector('main').insertAdjacentHTML('afterbegin', weatherPageContent());
+    renderAnimatedWave();
 
     // add active circle to home and remove other two in bottom menubar
     switchActiveMenuIcon('#weather', '#home', '#settings');
