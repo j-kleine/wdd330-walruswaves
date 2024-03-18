@@ -98,7 +98,7 @@ async function createWaterURL(selectedLocation) {
         const APIkey = 'ef87a209058e4633a7c121100242002';
         const waterURL = `https://api.weatherapi.com/v1/marine.json?key=${APIkey}&q=${lat},${lng}&days=1`;
 
-        console.log(waterURL);
+        // console.log(waterURL);
 
         return waterURL
       })
@@ -205,36 +205,36 @@ function displayCurrentWater(data) {
   sunsetTime.innerHTML = data.forecast.forecastday[0].astro.sunset;
 
   const tideChart = document.querySelector('#tide-events')
-  data.forecast.forecastday[0].day.tides[0].tide.forEach((event) => {
+  // data.forecast.forecastday[0].day.tides[0].tide.forEach((event) => {
     
-    let tideEvent = document.createElement('div');
-    tideEvent.setAttribute('class', 'tide-event');
-    tideChart.appendChild(tideEvent);
+  //   let tideEvent = document.createElement('div');
+  //   tideEvent.setAttribute('class', 'tide-event');
+  //   tideChart.appendChild(tideEvent);
 
-    let tideTime = document.createElement('span');
-    tideTime.setAttribute('class', 'tide-time weather-info-value');
-    tideTime.textContent = event.tide_time.split(' ')[1];
-    tideEvent.appendChild(tideTime);
+  //   let tideTime = document.createElement('span');
+  //   tideTime.setAttribute('class', 'tide-time weather-info-value');
+  //   tideTime.textContent = event.tide_time.split(' ')[1];
+  //   tideEvent.appendChild(tideTime);
 
-    let tideStatus = document.createElement('span');
-    tideStatus.setAttribute('class', 'tide-status weather-info-value');
-    tideStatus.textContent = event.tide_type;
-    tideEvent.appendChild(tideStatus);
+  //   let tideStatus = document.createElement('span');
+  //   tideStatus.setAttribute('class', 'tide-status weather-info-value');
+  //   tideStatus.textContent = event.tide_type;
+  //   tideEvent.appendChild(tideStatus);
 
-    let tideHeight = document.createElement('span');
-    tideHeight.setAttribute('class', 'tide-height weather-info-value');
-    let tideHeightMultiplier;
-    let unit;
-    if (lengthUnit == 'imperial') {
-      tideHeightMultiplier = 3.281;
-      unit = 'ft';
-    } else {
-      tideHeightMultiplier = 1;
-      unit = 'm';
-    }
-    tideHeight.textContent = '+' + (Number(event.tide_height_mt) * tideHeightMultiplier).toFixed(1) + ' ' + unit;
-    tideEvent.appendChild(tideHeight);
-  })
+  //   let tideHeight = document.createElement('span');
+  //   tideHeight.setAttribute('class', 'tide-height weather-info-value');
+  //   let tideHeightMultiplier;
+  //   let unit;
+  //   if (lengthUnit == 'imperial') {
+  //     tideHeightMultiplier = 3.281;
+  //     unit = 'ft';
+  //   } else {
+  //     tideHeightMultiplier = 1;
+  //     unit = 'm';
+  //   }
+  //   tideHeight.textContent = '+' + (Number(event.tide_height_mt) * tideHeightMultiplier).toFixed(1) + ' ' + unit;
+  //   tideEvent.appendChild(tideHeight);
+  // })
 }
 
 function animatedWaveContent() {
