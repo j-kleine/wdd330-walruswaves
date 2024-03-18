@@ -98,7 +98,7 @@ async function createWaterURL(selectedLocation) {
         const APIkey = 'ef87a209058e4633a7c121100242002';
         const waterURL = `https://api.weatherapi.com/v1/marine.json?key=${APIkey}&q=${lat},${lng}&days=1`;
 
-        // console.log(waterURL);
+        console.log(waterURL);
 
         return waterURL
       })
@@ -185,18 +185,18 @@ function displayCurrentWater(data) {
 
   // console.log(JSON.stringify(data));
 
-  let roundedWaterTemp;
-  if (tempUnit == 'imperial') {
-    roundedWaterTemp = data.forecast.forecastday[0].hour[7].water_temp_f.toFixed(0);
-    document.querySelector('.water-temp-unit').innerHTML = 'Fahrenheit';
-  } else {
-    roundedWaterTemp = data.forecast.forecastday[0].hour[7].water_temp_c.toFixed(0);
-    document.querySelector('.water-temp-unit').innerHTML = 'Celsius';
-  }
-  if (roundedWaterTemp == -0) {
-      roundedWaterTemp = 0;
-  }
-  waterTemp.innerHTML = `${roundedWaterTemp}&deg;`;
+  // let roundedWaterTemp;
+  // if (tempUnit == 'imperial') {
+  //   roundedWaterTemp = data.forecast.forecastday[0].hour[7].water_temp_f.toFixed(0);
+  //   document.querySelector('.water-temp-unit').innerHTML = 'Fahrenheit';
+  // } else {
+  //   roundedWaterTemp = data.forecast.forecastday[0].hour[7].water_temp_c.toFixed(0);
+  //   document.querySelector('.water-temp-unit').innerHTML = 'Celsius';
+  // }
+  // if (roundedWaterTemp == -0) {
+  //     roundedWaterTemp = 0;
+  // }
+  // waterTemp.innerHTML = `${roundedWaterTemp}&deg;`;
 
   sunriseTime.innerHTML = data.forecast.forecastday[0].astro.sunrise;
   // console.log(sunriseTimeString);
